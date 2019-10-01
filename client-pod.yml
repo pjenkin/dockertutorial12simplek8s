@@ -1,0 +1,14 @@
+# 12-174 Adding configuration files
+# this is the file to do the config (step 2 of 3) - see client-node-port for networking setup
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: client
+      image: peternjenkin/multi-client
+      ports:
+      - containerPort: 3000
