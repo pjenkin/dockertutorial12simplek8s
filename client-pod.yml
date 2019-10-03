@@ -7,8 +7,8 @@ metadata:
   labels:
     component: web
 spec:
-  containers:
+  containers:   # 1 container in this pod (discussed 12-176)
     - name: client
       image: peternjenkin/multi-client
       ports:
-      - containerPort: 3000
+      - containerPort: 3000   # nginx is still listening on port 3000 (more setup required)
