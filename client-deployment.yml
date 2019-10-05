@@ -1,0 +1,21 @@
+# 13-185 Deployment configuration files - deployment instead of the client-pod.yml used previously
+apiVersion: apps/v1
+kind: Deployment    # use a Deployment not just a Pod
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1   # specify the number of identical pods in this Deployment
+  selector:
+    matchLabels:  # NB matchLabels (plural) - cf template/labels:component=web (below)
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: peternjenkin/multi-client
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always   # FIX (PNJ) try to ensure any fixes built/pusht are used
