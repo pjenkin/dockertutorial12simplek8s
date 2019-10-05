@@ -9,6 +9,8 @@ metadata:
 spec:
   containers:   # 1 container in this pod (discussed 12-176)
     - name: client
-      image: peternjenkin/multi-client
+      #image: peternjenkin/multi-client
+      image: peternjenkin/multi-worker  # change this running pod to multi-worker image 13-182 declarative updates in action
       ports:
-      - containerPort: 3000   # nginx is still listening on port 3000 (more setup required)
+        - containerPort: 3000   # nginx is still listening on port 3000 (more setup required)
+      imagePullPolicy: Always   # FIX (PNJ) try to ensure any fixes built/pusht are used
